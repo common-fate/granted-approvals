@@ -18,9 +18,9 @@ type Fixtures struct {
 
 type Generator struct {
 	client       ad.AzureClient
-	tenantID     string `yaml:"tenantID"`
-	clientID     string `yaml:"clientID"`
-	clientSecret string `yaml:"clientSecret"`
+	tenantID     string
+	clientID     string
+	clientSecret string
 }
 
 // Configure the fixture generator
