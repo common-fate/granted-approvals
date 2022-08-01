@@ -117,9 +117,9 @@ func (s *Service) AddReviewAndGrantAccess(ctx context.Context, opts AddReviewOpt
 
 	switch r.Decision {
 	case access.DecisionApproved:
-		err = s.EventPutter.Put(ctx, gevent.RequestApproved{Request: request})
+		err = s.EventPutter.Put(ctx, gevent.RequestApproved{Request: request, ReviewerID: r.ReviewerID})
 	case access.DecisionDECLINED:
-		err = s.EventPutter.Put(ctx, gevent.RequestDeclined{Request: request})
+		err = s.EventPutter.Put(ctx, gevent.RequestDeclined{Request: request, ReviewerID: r.ReviewerID})
 	}
 
 	// In a future PR we will shift these events out to be triggered by dynamo db streams
